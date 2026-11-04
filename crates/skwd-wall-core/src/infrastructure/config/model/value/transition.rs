@@ -2,8 +2,18 @@ use serde_json::Value;
 
 use super::Config;
 
-const SKETCH_ENABLED: &str = "transition.sketchEnabled";
-const SKETCH_DURATION_MS: &str = "transition.sketchDurationMs";
+/// "Sketch before transition" settings (custom build; not in the upstream schema).
+pub const SKETCH_ENABLED: &str = "transition.sketchEnabled";
+pub const SKETCH_STYLE: &str = "transition.sketchStyle";
+pub const SKETCH_DURATION_MS: &str = "transition.sketchDurationMs";
+pub const SKETCH_VIDEOS: &str = "transition.sketchVideos";
+pub const SKETCH_SCENES: &str = "transition.sketchScenes";
+/// Where transitions start: default, centre, random or dense.
+pub const ORIGIN: &str = "transition.origin";
+
+pub const SKETCH_STYLES: [&str; 7] =
+    ["pencil", "digital", "chalk", "blueprint", "ink-brush", "charcoal", "notebook"];
+pub const ORIGINS: [&str; 4] = ["default", "centre", "random", "dense"];
 
 #[derive(Clone, Copy)]
 pub struct TransitionConfig<'a> {
@@ -78,13 +88,49 @@ impl<'a> TransitionConfig<'a> {
         if shader.is_empty() { "random".to_string() } else { shader }
     }
 
+    /// The transition time including the sketch, when one is drawn first.
     pub fn duration_ms(&self) -> u64 {
-        let base = self
-            .config
+        let base = self.base_duration_ms();
+        if base >= 10_000 { base } else { (base + self.sketch_ms()).min(10_000) }
+    }
+
+    /// The configured transition time, without the sketch.
+    pub fn base_duration_ms(&self) -> u64 {
+        self.config
             .get(skwd_config::keys::transition::DURATION_MS)
             .and_then(Value::as_f64)
-            .map_or(600, |number| number.clamp(50.0, 10000.0) as u64);
-        if base >= 10_000 { base } else { (base + self.sketch_ms()).min(10_000) }
+            .map_or(600, |number| number.clamp(50.0, 10000.0) as u64)
+    }
+
+    fn flag_or(&self, key: &str, default: bool) -> bool {
+        self.config.get(key).and_then(Value::as_bool).unwrap_or(default)
+    }
+
+    pub fn sketch_style(&self) -> String {
+        let style = self.config.str_at(SKETCH_STYLE, "pencil");
+        if SKETCH_STYLES.contains(&style.as_str()) { style } else { String::from("pencil") }
+    }
+
+    /// Renderer environment value for the sketch (`SKWD_PAPER_SKETCH`), or an
+    /// empty string when no sketch is drawn.
+    pub fn sketch_env(&self) -> String {
+        let sketch = self.sketch_ms();
+        if sketch == 0 || self.base_duration_ms() >= 10_000 {
+            return String::new();
+        }
+        format!(
+            "style={};ms={sketch};base={};videos={};scenes={}",
+            self.sketch_style(),
+            self.base_duration_ms(),
+            u8::from(self.flag_or(SKETCH_VIDEOS, true)),
+            u8::from(self.flag_or(SKETCH_SCENES, true)),
+        )
+    }
+
+    /// Transition start point (`SKWD_PAPER_TRANSITION_ORIGIN`).
+    pub fn origin(&self) -> String {
+        let origin = self.config.str_at(ORIGIN, "default");
+        if ORIGINS.contains(&origin.as_str()) { origin } else { String::from("default") }
     }
 
     /// Extra time for the "sketch before transition" prelude (0 when off).
@@ -92,9 +138,7 @@ impl<'a> TransitionConfig<'a> {
     /// transition from the finished sketch. Sketch plus transition is capped
     /// at the 10 s the renderer protocol accepts.
     pub fn sketch_ms(&self) -> u64 {
-        let enabled =
-            self.config.get(SKETCH_ENABLED).and_then(Value::as_bool).unwrap_or(false);
-        if !enabled {
+        if !self.flag_or(SKETCH_ENABLED, false) || !self.active() {
             return 0;
         }
         self.config

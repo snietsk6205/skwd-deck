@@ -31,6 +31,7 @@ pub(super) struct PaperPolicy {
     pub(super) transition_fps: u32,
     pub(super) output_refresh: String,
     pub(super) transitions_active: bool,
+    pub(super) sketch: String,
 }
 
 impl PaperPolicy {
@@ -58,6 +59,7 @@ impl PaperPolicy {
             self.transition_fps,
             self.output_refresh,
             self.transitions_active,
+            self.sketch,
         ])
         .to_string()
     }
@@ -113,6 +115,7 @@ pub(super) fn current_paper_policy(state: &WallState) -> PaperPolicy {
         transition_fps: config.transition().fps(),
         output_refresh: crate::outputs::refresh_signature(&crate::outputs::enumerate()),
         transitions_active: config.transition().active(),
+        sketch: format!("{}|{}", config.transition().sketch_env(), config.transition().origin()),
     }
 }
 

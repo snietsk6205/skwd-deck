@@ -1062,3 +1062,30 @@ fn reload_repairs_permissions() {
     assert!(Config::load_path_if_changed(&link, &bytes).is_none());
     assert_eq!(std::fs::metadata(&path).unwrap().permissions().mode() & 0o777, 0o644);
 }
+
+#[test]
+fn sketch_settings_reach_the_renderer_environment() {
+    let off = Config::from_root(json!({}));
+    assert_eq!(off.transition().sketch_ms(), 0);
+    assert_eq!(off.transition().sketch_env(), "");
+    assert_eq!(off.transition().origin(), "default");
+    let on = Config::from_root(json!({"transition": {
+        "durationMs": 1500,
+        "sketchEnabled": true,
+        "sketchStyle": "chalk",
+        "sketchDurationMs": 4000,
+        "sketchVideos": false,
+        "origin": "dense"
+    }}));
+    assert_eq!(on.transition().duration_ms(), 5500);
+    assert_eq!(on.transition().base_duration_ms(), 1500);
+    assert_eq!(on.transition().sketch_env(), "style=chalk;ms=4000;base=1500;videos=0;scenes=1");
+    assert_eq!(on.transition().origin(), "dense");
+    let disabled = Config::from_root(json!({"transition": {
+        "enabled": false, "sketchEnabled": true, "origin": "sideways", "sketchStyle": "crayon"
+    }}));
+    assert_eq!(disabled.transition().sketch_ms(), 0);
+    assert_eq!(disabled.transition().sketch_env(), "");
+    assert_eq!(disabled.transition().origin(), "default");
+    assert_eq!(disabled.transition().sketch_style(), "pencil");
+}

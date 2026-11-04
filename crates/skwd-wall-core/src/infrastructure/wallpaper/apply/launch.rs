@@ -311,6 +311,8 @@ impl RendererLaunchSpec {
             .env("SKWD_PAPER_SAND_SCOPE", sand_scope)
             .env("SKWD_PAPER_SAND_PRIMARY", config.transition().sand_primary())
             .env("SKWD_PAPER_SAND_SHARP", if config.transition().sand_sharp() { "1" } else { "0" })
+            .env("SKWD_PAPER_SKETCH", config.transition().sketch_env())
+            .env("SKWD_PAPER_TRANSITION_ORIGIN", config.transition().origin())
             .env(
                 "SKWD_PAPER_SAND_FPS",
                 transition_fps.map_or_else(|| "auto".to_string(), |fps| fps.to_string()),
@@ -912,6 +914,8 @@ mod tests {
             "SKWD_PAPER_SAND_PRIMARY",
             "SKWD_PAPER_SAND_SHARP",
             "SKWD_PAPER_SAND_FPS",
+            "SKWD_PAPER_SKETCH",
+            "SKWD_PAPER_TRANSITION_ORIGIN",
         ] {
             assert!(command_env(&steady, key).is_some(), "{key}");
         }

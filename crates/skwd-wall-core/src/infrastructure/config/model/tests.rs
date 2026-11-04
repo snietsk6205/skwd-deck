@@ -1089,3 +1089,23 @@ fn sketch_settings_reach_the_renderer_environment() {
     assert_eq!(disabled.transition().origin(), "default");
     assert_eq!(disabled.transition().sketch_style(), "pencil");
 }
+
+#[test]
+fn sketch_keys_match_the_schema() {
+    // value/transition/sketch.rs spells the keys out (the layer guard keeps
+    // keys::transition::* in value/transition.rs); they must stay identical.
+    let on = Config::from_root(json!({}));
+    for key in [
+        skwd_config::keys::transition::SKETCH_ENABLED,
+        skwd_config::keys::transition::SKETCH_STYLE,
+        skwd_config::keys::transition::SKETCH_DURATION_MS,
+        skwd_config::keys::transition::SKETCH_VIDEOS,
+        skwd_config::keys::transition::SKETCH_SCENES,
+        skwd_config::keys::transition::ORIGIN,
+    ] {
+        assert!(skwd_config::schema::find(key).is_some(), "{key}");
+        let source = include_str!("value/transition/sketch.rs");
+        assert!(source.contains(&format!("\"{key}\"")), "{key} spelled differently");
+    }
+    assert_eq!(on.transition().sketch_style(), "pencil");
+}

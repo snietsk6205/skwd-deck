@@ -27,7 +27,7 @@ impl TransitionConfig<'_> {
         if base >= 10_000 { base } else { (base + self.sketch_ms()).min(10_000) }
     }
 
-    fn flag_or(&self, key: &str, default: bool) -> bool {
+    fn flag_or(self, key: &str, default: bool) -> bool {
         self.config.get(key).and_then(Value::as_bool).unwrap_or(default)
     }
 

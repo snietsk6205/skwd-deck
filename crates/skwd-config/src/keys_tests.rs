@@ -457,6 +457,12 @@ fn wire_strings_pinned() {
     assert_eq!(keys::theme::WALLUST_COLORSPACE, "theme.wallustColorspace");
     assert_eq!(keys::theme::WALLUST_PALETTE, "theme.wallustPalette");
     assert_eq!(keys::transition::DURATION_MS, "transition.durationMs");
+    assert_eq!(keys::transition::ORIGIN, "transition.origin");
+    assert_eq!(keys::transition::SKETCH_DURATION_MS, "transition.sketchDurationMs");
+    assert_eq!(keys::transition::SKETCH_ENABLED, "transition.sketchEnabled");
+    assert_eq!(keys::transition::SKETCH_SCENES, "transition.sketchScenes");
+    assert_eq!(keys::transition::SKETCH_STYLE, "transition.sketchStyle");
+    assert_eq!(keys::transition::SKETCH_VIDEOS, "transition.sketchVideos");
     assert_eq!(keys::transition::ENABLED, "transition.enabled");
     assert_eq!(keys::transition::PREVIEW, "transition.preview");
     assert_eq!(keys::transition::PREVIEW_FPS, "transition.previewFps");

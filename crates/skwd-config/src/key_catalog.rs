@@ -578,6 +578,14 @@ pub mod keys {
         pub const DURATION_MS: &str = "transition.durationMs";
         pub const FPS: &str = "transition.fps";
         pub const ENABLED: &str = "transition.enabled";
+        /// Custom build: where point-based transitions start (default, centre, random, dense).
+        pub const ORIGIN: &str = "transition.origin";
+        /// Custom build: "sketch before transition" settings.
+        pub const SKETCH_DURATION_MS: &str = "transition.sketchDurationMs";
+        pub const SKETCH_ENABLED: &str = "transition.sketchEnabled";
+        pub const SKETCH_SCENES: &str = "transition.sketchScenes";
+        pub const SKETCH_STYLE: &str = "transition.sketchStyle";
+        pub const SKETCH_VIDEOS: &str = "transition.sketchVideos";
         pub const FAMILY: &str = "transition.family";
         pub const PREVIEW: &str = "transition.preview";
         pub const PREVIEW_FPS: &str = "transition.previewFps";

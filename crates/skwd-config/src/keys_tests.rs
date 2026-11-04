@@ -457,6 +457,14 @@ fn wire_strings_pinned() {
     assert_eq!(keys::theme::WALLUST_COLORSPACE, "theme.wallustColorspace");
     assert_eq!(keys::theme::WALLUST_PALETTE, "theme.wallustPalette");
     assert_eq!(keys::transition::DURATION_MS, "transition.durationMs");
+    assert_eq!(keys::filter_bar::SHOW_EFFECTS, "filterBar.show.effects");
+    assert_eq!(keys::selector::GRID_FOCUS_WIDTH, "components.wallpaperSelector.gridFocusWidth");
+    assert_eq!(keys::settings_window::WIDTH_PERCENT, "settingsWindow.widthPercent");
+    assert_eq!(keys::settings_window::HEIGHT_PERCENT, "settingsWindow.heightPercent");
+    assert_eq!(keys::settings_window::SCALE, "settingsWindow.scale");
+    assert_eq!(keys::settings_window::POSITION, "settingsWindow.position");
+    assert_eq!(keys::settings_window::COLUMNS, "settingsWindow.columns");
+    assert_eq!(keys::settings_window::COMPACT_INDEX, "settingsWindow.compactIndex");
     assert_eq!(keys::transition::ORIGIN, "transition.origin");
     assert_eq!(keys::transition::SKETCH_DURATION_MS, "transition.sketchDurationMs");
     assert_eq!(keys::transition::SKETCH_ENABLED, "transition.sketchEnabled");

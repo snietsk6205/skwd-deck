@@ -122,6 +122,8 @@ pub mod keys {
         pub const SHOW_ORIENT: &str = "filterBar.show.orient";
         pub const SHOW_DOWNLOAD: &str = "filterBar.show.download";
         pub const SHOW_PLAYLISTS: &str = "filterBar.show.playlists";
+        /// Custom build: the Effects button (Palette, Duotone, ... for the selected card).
+        pub const SHOW_EFFECTS: &str = "filterBar.show.effects";
         pub const SHOW_FOLDER: &str = "filterBar.show.folder";
         pub const SHOW_RANDOM: &str = "filterBar.show.random";
         pub const SHOW_RESOLUTION: &str = "filterBar.show.resolution";
@@ -130,6 +132,15 @@ pub mod keys {
         pub const SHOW_THEME: &str = "filterBar.show.theme";
         pub const STICKY: &str = "filterBar.sticky";
         pub const VISUAL_STYLE: &str = "filterBar.visualStyle";
+    }
+    /// Custom build: size, place and layout of the Settings window.
+    pub mod settings_window {
+        pub const WIDTH_PERCENT: &str = "settingsWindow.widthPercent";
+        pub const HEIGHT_PERCENT: &str = "settingsWindow.heightPercent";
+        pub const SCALE: &str = "settingsWindow.scale";
+        pub const POSITION: &str = "settingsWindow.position";
+        pub const COLUMNS: &str = "settingsWindow.columns";
+        pub const COMPACT_INDEX: &str = "settingsWindow.compactIndex";
     }
     pub mod general {
         pub const APPLY_ON_PICKER_MONITOR: &str = "general.applyOnPickerMonitor";
@@ -303,6 +314,8 @@ pub mod keys {
         pub const GRID_GAP_X: &str = "components.wallpaperSelector.gridGapX";
         pub const GRID_GAP_Y: &str = "components.wallpaperSelector.gridGapY";
         pub const GRID_LAYOUT: &str = "components.wallpaperSelector.gridLayout";
+        /// Custom build: width of the ring around the selected card in Grid mode.
+        pub const GRID_FOCUS_WIDTH: &str = "components.wallpaperSelector.gridFocusWidth";
         pub const GRID_FLOW_FREQUENCY: &str = "components.wallpaperSelector.gridFlowFrequency";
         pub const GRID_FLOW_WAVE: &str = "components.wallpaperSelector.gridFlowWave";
         pub const GRID_ROUND_CORNERS: &str = "components.wallpaperSelector.gridRoundCorners";

@@ -138,3 +138,16 @@ fn manual_gpu_is_a_stable_uuid_or_automatic() {
         );
     }
 }
+
+#[test]
+fn low_power_applies_the_saver_limits_on_mains_power() {
+    let root = serde_json::json!({ "performance": { "lowPower": true, "batteryFps": 30 } });
+    assert!(super::low_power_enabled(&root));
+    assert!(super::saver_active(&root, false));
+    assert_eq!(super::effective_picker_fps(&root, false, 144.0), 30.0);
+    assert!(super::effective_wallpaper_performance(&root, false, false));
+    assert_eq!(super::effective_gpu_preference(&root, false), "low");
+    let off = serde_json::json!({ "performance": { "lowPower": false } });
+    assert!(!super::saver_active(&off, false));
+    assert_eq!(super::effective_picker_fps(&off, false, 144.0), 144.0);
+}

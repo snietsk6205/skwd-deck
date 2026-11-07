@@ -1088,6 +1088,13 @@ fn sketch_settings_reach_the_renderer_environment() {
     assert_eq!(disabled.transition().sketch_env(), "");
     assert_eq!(disabled.transition().origin(), "default");
     assert_eq!(disabled.transition().sketch_style(), "pencil");
+    let low_power = Config::from_root(json!({
+        "transition": { "durationMs": 1500, "sketchEnabled": true },
+        "performance": { "lowPower": true }
+    }));
+    assert_eq!(low_power.transition().sketch_ms(), 0);
+    assert_eq!(low_power.transition().sketch_env(), "");
+    assert_eq!(low_power.transition().duration_ms(), 1500);
 }
 
 #[test]
@@ -1102,6 +1109,7 @@ fn sketch_keys_match_the_schema() {
         skwd_config::keys::transition::SKETCH_VIDEOS,
         skwd_config::keys::transition::SKETCH_SCENES,
         skwd_config::keys::transition::ORIGIN,
+        skwd_config::keys::performance::LOW_POWER,
     ] {
         assert!(skwd_config::schema::find(key).is_some(), "{key}");
         let source = include_str!("value/transition/sketch.rs");

@@ -487,6 +487,8 @@ fn wire_strings_pinned() {
     assert_eq!(keys::filter_bar::ORDER, "filterBar.order");
     assert_eq!(keys::filter_bar::SCALE, "filterBar.scale");
     assert_eq!(keys::filter_bar::ANCHOR, "filterBar.anchor");
+    assert_eq!(keys::performance::LOW_POWER, "performance.lowPower");
+    assert_eq!(keys::performance::OVERLAY, "performance.overlay");
     assert_eq!(keys::settings_window::WIDTH_PERCENT, "settingsWindow.widthPercent");
     assert_eq!(keys::settings_window::HEIGHT_PERCENT, "settingsWindow.heightPercent");
     assert_eq!(keys::settings_window::SCALE, "settingsWindow.scale");

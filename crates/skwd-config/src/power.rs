@@ -32,6 +32,17 @@ pub fn battery_saver_enabled(root: &Value) -> bool {
     bool_true_unless_false(root, keys::performance::BATTERY_SAVER)
 }
 
+/// Low-power mode (custom build): behave as if the battery saver were active
+/// all the time, on battery or not, and use the cheap version of heavy effects.
+pub fn low_power_enabled(root: &Value) -> bool {
+    crate::bool_false_unless_true(root, keys::performance::LOW_POWER)
+}
+
+/// Whether the battery-saver limits apply right now.
+pub fn saver_active(root: &Value, on_battery: bool) -> bool {
+    low_power_enabled(root) || (battery_saver_enabled(root) && on_battery)
+}
+
 pub fn battery_fps(root: &Value) -> u32 {
     u64_at(root, keys::performance::BATTERY_FPS).unwrap_or(u64::from(DEFAULT_BATTERY_FPS)).min(360)
         as u32
@@ -71,14 +82,14 @@ pub fn configured_gpu_preference(root: &Value) -> &'static str {
 
 pub fn effective_gpu_preference(root: &Value, on_battery: bool) -> &'static str {
     match configured_gpu_preference(root) {
-        "auto" if battery_saver_enabled(root) && on_battery => "low",
+        "auto" if saver_active(root, on_battery) => "low",
         "auto" => "none",
         preference => preference,
     }
 }
 
 pub fn effective_picker_fps(root: &Value, on_battery: bool, configured: f32) -> f32 {
-    if !battery_saver_enabled(root) || !on_battery {
+    if !saver_active(root, on_battery) {
         return configured;
     }
     let cap = battery_fps(root);
@@ -86,7 +97,7 @@ pub fn effective_picker_fps(root: &Value, on_battery: bool, configured: f32) -> 
 }
 
 pub fn effective_video_idle_seconds(root: &Value, on_battery: bool, configured: u32) -> u32 {
-    if !battery_saver_enabled(root) || !on_battery {
+    if !saver_active(root, on_battery) {
         return configured;
     }
     let cap = battery_video_idle_seconds(root);
@@ -98,7 +109,9 @@ pub fn effective_video_idle_seconds(root: &Value, on_battery: bool, configured: 
 }
 
 pub fn effective_wallpaper_performance(root: &Value, on_battery: bool, configured: bool) -> bool {
-    configured || (battery_saver_enabled(root) && on_battery && battery_wallpaper_performance(root))
+    configured
+        || low_power_enabled(root)
+        || (battery_saver_enabled(root) && on_battery && battery_wallpaper_performance(root))
 }
 
 fn trimmed(path: &Path) -> std::io::Result<String> {

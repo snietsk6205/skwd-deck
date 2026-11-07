@@ -25,8 +25,8 @@ pub use power::{
     battery_percent, battery_percent_at, battery_saver_enabled, battery_video_idle_seconds,
     battery_wallpaper_performance, configured_gpu_device, configured_gpu_preference,
     effective_gpu_preference, effective_picker_fps, effective_video_idle_seconds,
-    effective_wallpaper_performance, on_battery_power, power_source_state, power_source_state_at,
-    set_power_source_snapshot,
+    effective_wallpaper_performance, low_power_enabled, on_battery_power, power_source_state,
+    power_source_state_at, saver_active, set_power_source_snapshot,
 };
 pub use profile::{
     EVERYTHING_PROFILE, FolderState, LibraryItem, LibraryProfile, active_library_profile,

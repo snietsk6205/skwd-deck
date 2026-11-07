@@ -748,6 +748,10 @@ pub mod keys {
         pub const IMAGE_OPTIMIZE_RESOLUTION: &str = "performance.imageOptimizeResolution";
         pub const IMAGE_TRASH_DAYS: &str = "performance.imageTrashDays";
         pub const MAX_THUMB_JOBS: &str = "performance.maxThumbJobs";
+        /// Custom build: always use the cheap version of every heavy effect.
+        pub const LOW_POWER: &str = "performance.lowPower";
+        /// Custom build: show the performance overlay (FPS, frame time, CPU).
+        pub const OVERLAY: &str = "performance.overlay";
     }
 }
 

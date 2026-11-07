@@ -14,6 +14,8 @@ const SKETCH_VIDEOS: &str = "transition.sketchVideos";
 const SKETCH_SCENES: &str = "transition.sketchScenes";
 /// Where transitions start: default, centre, random or dense.
 const ORIGIN: &str = "transition.origin";
+/// Low-power mode (custom build) turns the sketch off.
+const LOW_POWER: &str = "performance.lowPower";
 
 const SKETCH_STYLES: [&str; 7] =
     ["pencil", "digital", "chalk", "blueprint", "ink-brush", "charcoal", "notebook"];
@@ -63,7 +65,9 @@ impl TransitionConfig<'_> {
     /// transition from the finished sketch. Sketch plus transition is capped
     /// at the 10 s the renderer protocol accepts.
     pub fn sketch_ms(&self) -> u64 {
-        if !self.flag_or(SKETCH_ENABLED, false) || !self.active() {
+        // Low-power mode skips the sketch (it is the costliest transition prelude).
+        if !self.flag_or(SKETCH_ENABLED, false) || !self.active() || self.flag_or(LOW_POWER, false)
+        {
             return 0;
         }
         self.config

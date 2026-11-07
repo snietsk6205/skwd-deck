@@ -630,6 +630,8 @@ const STATIC_SPECS: &[SettingSpec] = &[
     SettingSpec::boolean(crate::keys::general::NOTIFY_ON_WALLPAPER_CHANGE, true),
     SettingSpec::boolean(crate::keys::system::RESTORE_ON_STARTUP, true),
     SettingSpec::boolean(crate::keys::performance::BATTERY_SAVER, true),
+    SettingSpec::boolean(crate::keys::performance::LOW_POWER, false),
+    SettingSpec::boolean(crate::keys::performance::OVERLAY, false),
     SettingSpec::boolean(crate::keys::effects::AUTO_RECOLOR, false),
     SettingSpec::boolean(crate::keys::general::RANDOM_ROTATE, false),
     SettingSpec::boolean(crate::keys::weather::ENABLED, false),

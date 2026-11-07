@@ -124,6 +124,12 @@ pub mod keys {
         pub const SHOW_PLAYLISTS: &str = "filterBar.show.playlists";
         /// Custom build: the Effects button (Palette, Duotone, ... for the selected card).
         pub const SHOW_EFFECTS: &str = "filterBar.show.effects";
+        /// Custom build: order of the bar's button groups (comma-separated group keys).
+        pub const ORDER: &str = "filterBar.order";
+        /// Custom build: size of the bar (1 = normal).
+        pub const SCALE: &str = "filterBar.scale";
+        /// Custom build: where the bar sits: auto, top, bottom, left or right.
+        pub const ANCHOR: &str = "filterBar.anchor";
         pub const SHOW_FOLDER: &str = "filterBar.show.folder";
         pub const SHOW_RANDOM: &str = "filterBar.show.random";
         pub const SHOW_RESOLUTION: &str = "filterBar.show.resolution";
@@ -364,6 +370,24 @@ pub mod keys {
         pub const COLLECTION_TILT: &str = "components.wallpaperSelector.collectionTilt";
         pub const COLLECTION_CORNERS: &str = "components.wallpaperSelector.collectionCorners";
         pub const COLLECTION_SPEED: &str = "components.wallpaperSelector.collectionSpeed";
+        /// Custom build: Coverflow layout (coverflow, carousel ring or stack).
+        pub const COVERFLOW_STYLE: &str = "components.wallpaperSelector.coverflowStyle";
+        pub const COVERFLOW_SIZE: &str = "components.wallpaperSelector.coverflowSize";
+        pub const COVERFLOW_ANGLE: &str = "components.wallpaperSelector.coverflowAngle";
+        pub const COVERFLOW_SPACING: &str = "components.wallpaperSelector.coverflowSpacing";
+        pub const COVERFLOW_COUNT: &str = "components.wallpaperSelector.coverflowCount";
+        pub const COVERFLOW_REFLECTION: &str = "components.wallpaperSelector.coverflowReflection";
+        pub const COVERFLOW_BACKDROP: &str = "components.wallpaperSelector.coverflowBackdrop";
+        pub const COVERFLOW_CORNERS: &str = "components.wallpaperSelector.coverflowCorners";
+        pub const COVERFLOW_SPEED: &str = "components.wallpaperSelector.coverflowSpeed";
+        /// Custom build: Showcase layout (big preview and a filmstrip).
+        pub const SHOWCASE_HERO: &str = "components.wallpaperSelector.showcaseHero";
+        pub const SHOWCASE_STRIP: &str = "components.wallpaperSelector.showcaseStrip";
+        pub const SHOWCASE_STRIP_POSITION: &str =
+            "components.wallpaperSelector.showcaseStripPosition";
+        pub const SHOWCASE_BACKDROP: &str = "components.wallpaperSelector.showcaseBackdrop";
+        pub const SHOWCASE_CORNERS: &str = "components.wallpaperSelector.showcaseCorners";
+        pub const SHOWCASE_SPEED: &str = "components.wallpaperSelector.showcaseSpeed";
         pub const HAND_CARD_HEIGHT: &str = "components.wallpaperSelector.handCardHeight";
         pub const HAND_CARD_WIDTH: &str = "components.wallpaperSelector.handCardWidth";
         pub const HAND_COUNT: &str = "components.wallpaperSelector.handCount";

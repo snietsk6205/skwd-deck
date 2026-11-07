@@ -459,6 +459,33 @@ fn wire_strings_pinned() {
     assert_eq!(keys::transition::DURATION_MS, "transition.durationMs");
     assert_eq!(keys::filter_bar::SHOW_EFFECTS, "filterBar.show.effects");
     assert_eq!(keys::selector::GRID_FOCUS_WIDTH, "components.wallpaperSelector.gridFocusWidth");
+    assert_eq!(keys::selector::COVERFLOW_STYLE, "components.wallpaperSelector.coverflowStyle");
+    assert_eq!(keys::selector::COVERFLOW_SIZE, "components.wallpaperSelector.coverflowSize");
+    assert_eq!(keys::selector::COVERFLOW_ANGLE, "components.wallpaperSelector.coverflowAngle");
+    assert_eq!(keys::selector::COVERFLOW_SPACING, "components.wallpaperSelector.coverflowSpacing");
+    assert_eq!(keys::selector::COVERFLOW_COUNT, "components.wallpaperSelector.coverflowCount");
+    assert_eq!(
+        keys::selector::COVERFLOW_REFLECTION,
+        "components.wallpaperSelector.coverflowReflection"
+    );
+    assert_eq!(
+        keys::selector::COVERFLOW_BACKDROP,
+        "components.wallpaperSelector.coverflowBackdrop"
+    );
+    assert_eq!(keys::selector::COVERFLOW_CORNERS, "components.wallpaperSelector.coverflowCorners");
+    assert_eq!(keys::selector::COVERFLOW_SPEED, "components.wallpaperSelector.coverflowSpeed");
+    assert_eq!(keys::selector::SHOWCASE_HERO, "components.wallpaperSelector.showcaseHero");
+    assert_eq!(keys::selector::SHOWCASE_STRIP, "components.wallpaperSelector.showcaseStrip");
+    assert_eq!(
+        keys::selector::SHOWCASE_STRIP_POSITION,
+        "components.wallpaperSelector.showcaseStripPosition"
+    );
+    assert_eq!(keys::selector::SHOWCASE_BACKDROP, "components.wallpaperSelector.showcaseBackdrop");
+    assert_eq!(keys::selector::SHOWCASE_CORNERS, "components.wallpaperSelector.showcaseCorners");
+    assert_eq!(keys::selector::SHOWCASE_SPEED, "components.wallpaperSelector.showcaseSpeed");
+    assert_eq!(keys::filter_bar::ORDER, "filterBar.order");
+    assert_eq!(keys::filter_bar::SCALE, "filterBar.scale");
+    assert_eq!(keys::filter_bar::ANCHOR, "filterBar.anchor");
     assert_eq!(keys::settings_window::WIDTH_PERCENT, "settingsWindow.widthPercent");
     assert_eq!(keys::settings_window::HEIGHT_PERCENT, "settingsWindow.heightPercent");
     assert_eq!(keys::settings_window::SCALE, "settingsWindow.scale");

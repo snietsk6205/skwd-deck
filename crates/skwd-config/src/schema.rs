@@ -569,6 +569,7 @@ const STATIC_SPECS: &[SettingSpec] = &[
     SettingSpec::boolean(crate::keys::filter_bar::SHOW_DOWNLOAD, true),
     SettingSpec::boolean(crate::keys::filter_bar::SHOW_PLAYLISTS, true),
     SettingSpec::boolean(crate::keys::filter_bar::SHOW_EFFECTS, true),
+    SettingSpec::boolean(crate::keys::filter_bar::SHOW_LAYOUT, true),
     SettingSpec::bounded_number(crate::keys::selector::GRID_FOCUS_WIDTH, 3.0, 0.0, 12.0),
     SettingSpec::text(crate::keys::selector::COVERFLOW_STYLE, "coverflow"),
     SettingSpec::bounded_number(crate::keys::selector::COVERFLOW_SIZE, 46.0, 20.0, 75.0),

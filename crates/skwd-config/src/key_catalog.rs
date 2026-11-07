@@ -124,6 +124,8 @@ pub mod keys {
         pub const SHOW_PLAYLISTS: &str = "filterBar.show.playlists";
         /// Custom build: the Effects button (Palette, Duotone, ... for the selected card).
         pub const SHOW_EFFECTS: &str = "filterBar.show.effects";
+        /// Custom build: the button that switches the picker layout (like the M key).
+        pub const SHOW_LAYOUT: &str = "filterBar.show.layout";
         /// Custom build: order of the bar's button groups (comma-separated group keys).
         pub const ORDER: &str = "filterBar.order";
         /// Custom build: size of the bar (1 = normal).

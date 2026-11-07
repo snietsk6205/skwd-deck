@@ -458,6 +458,7 @@ fn wire_strings_pinned() {
     assert_eq!(keys::theme::WALLUST_PALETTE, "theme.wallustPalette");
     assert_eq!(keys::transition::DURATION_MS, "transition.durationMs");
     assert_eq!(keys::filter_bar::SHOW_EFFECTS, "filterBar.show.effects");
+    assert_eq!(keys::filter_bar::SHOW_LAYOUT, "filterBar.show.layout");
     assert_eq!(keys::selector::GRID_FOCUS_WIDTH, "components.wallpaperSelector.gridFocusWidth");
     assert_eq!(keys::selector::COVERFLOW_STYLE, "components.wallpaperSelector.coverflowStyle");
     assert_eq!(keys::selector::COVERFLOW_SIZE, "components.wallpaperSelector.coverflowSize");

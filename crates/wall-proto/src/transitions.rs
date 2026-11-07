@@ -52,7 +52,7 @@ pub struct TransitionSpec {
     pub family: Family,
 }
 
-pub const TRANSITIONS: [TransitionSpec; 40] = [
+pub const TRANSITIONS: [TransitionSpec; 47] = [
     TransitionSpec { key: "random", family: Family::Random },
     TransitionSpec { key: "chromatic-bloom", family: Family::Break },
     TransitionSpec { key: "circle-crop", family: Family::Wipe },
@@ -93,6 +93,14 @@ pub const TRANSITIONS: [TransitionSpec; 40] = [
     TransitionSpec { key: "soft-warp-fade", family: Family::Fade },
     TransitionSpec { key: "voronoi-shatter", family: Family::Break },
     TransitionSpec { key: "zoom-blur-pull", family: Family::Warp },
+    // Custom build.
+    TransitionSpec { key: "ripple", family: Family::Warp },
+    TransitionSpec { key: "honeycomb", family: Family::Wipe },
+    TransitionSpec { key: "burn", family: Family::Break },
+    TransitionSpec { key: "page-curl", family: Family::Warp },
+    TransitionSpec { key: "blinds", family: Family::Wipe },
+    TransitionSpec { key: "slide", family: Family::Wipe },
+    TransitionSpec { key: "vortex", family: Family::Warp },
 ];
 
 pub fn family_of(key: &str) -> Family {

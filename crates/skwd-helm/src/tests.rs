@@ -511,3 +511,13 @@ fn shown_respects_profile() {
     assert!(!shown(&item("we:1", "/steam/movie.mp4", false), profile.as_ref()));
     assert!(shown(&item("we:1", "/steam/movie.mp4", false), None));
 }
+
+#[test]
+fn bench_finds_wayland_sockets_only() {
+    use super::bench::is_wayland_socket_name;
+    assert!(is_wayland_socket_name("wayland-1"));
+    assert!(is_wayland_socket_name("wayland-12"));
+    assert!(!is_wayland_socket_name("wayland-1.lock"));
+    assert!(!is_wayland_socket_name("wayland-"));
+    assert!(!is_wayland_socket_name("pipewire-0"));
+}

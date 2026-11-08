@@ -107,6 +107,9 @@ VERBS:\n\
   set <config.path> <value>   (e.g. set transition.durationMs 1200)\n\
                                     state   (print picker state as JSON: mode, selection,\n\
                                              camera, filter, overlay, animation flags)\n\
+                                    perf [on|off]   (live timings as JSON; overlay on/off)\n\
+                                    bench [--gpu high|low]   (starts the picker, runs the\n\
+                                             benchmark, prints the report, closes the picker)\n\
   hw-probe                        print GPU capability report as JSON (adapters,\n\
                                   backend, BC7 thumbnail support, texture limits)\n\
 \n\

@@ -1,4 +1,5 @@
 mod args;
+mod bench;
 mod commands;
 mod config;
 mod entry;

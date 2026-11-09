@@ -539,7 +539,9 @@ fn apply_static_arm(
         let config = state.config();
         (
             config.transition().active(),
-            config.transition().shader(),
+            config
+                .transition()
+                .concrete_shader(|entries, order| state.apply().next_transition(entries, order)),
             config.transition().duration_ms(),
         )
     };
@@ -641,7 +643,9 @@ fn video_render(
         let config = state.config();
         (
             config.transition().active(),
-            config.transition().shader(),
+            config
+                .transition()
+                .concrete_shader(|entries, order| state.apply().next_transition(entries, order)),
             config.transition().duration_ms(),
         )
     };
@@ -745,9 +749,10 @@ fn apply_we_arm(
         let configured = config.transition();
         (
             transition_override.and_then(|value| value.enabled).unwrap_or(configured.active()),
-            transition_override
-                .and_then(|value| value.shader.clone())
-                .unwrap_or_else(|| configured.shader()),
+            transition_override.and_then(|value| value.shader.clone()).unwrap_or_else(|| {
+                configured
+                    .concrete_shader(|entries, order| state.apply().next_transition(entries, order))
+            }),
             transition_override
                 .and_then(|value| value.duration_ms)
                 .unwrap_or(configured.duration_ms()),

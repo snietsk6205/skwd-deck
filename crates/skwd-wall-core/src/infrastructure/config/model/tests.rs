@@ -1117,3 +1117,54 @@ fn sketch_keys_match_the_schema() {
     }
     assert_eq!(on.transition().sketch_style(), "pencil");
 }
+
+#[test]
+fn transition_deck_keys_match_the_schema() {
+    // value/transition/deck.rs spells the keys out (see the sketch test above).
+    let source = include_str!("value/transition/deck.rs");
+    for key in [
+        skwd_config::keys::transition::FAVOURITES,
+        skwd_config::keys::transition::PLAYLIST,
+        skwd_config::keys::transition::PLAYLIST_ORDER,
+        skwd_config::keys::transition::COMBO_FIRST,
+        skwd_config::keys::transition::COMBO_SECOND,
+        skwd_config::keys::transition::COMBO_MODE,
+        skwd_config::keys::transition::COMBO_SPLIT,
+    ] {
+        assert!(skwd_config::schema::find(key).is_some(), "{key}");
+        assert!(source.contains(&format!("\"{key}\"")), "{key} spelled differently");
+    }
+}
+
+#[test]
+fn playlist_and_combo_become_real_transitions() {
+    use crate::domain::wallpaper::DeckOrder;
+    let config = Config::from_root(json!({
+        "transition": {
+            "shader": "playlist",
+            "playlist": "burn, no-such-thing, combo, sand-galaxy",
+            "playlistOrder": "shuffle",
+            "comboFirst": "iris",
+            "comboSecond": "glitch",
+            "comboMode": "split",
+            "comboSplit": "circle",
+            "favourites": "ripple,burn"
+        }
+    }));
+    let transition = config.transition();
+    assert_eq!(transition.playlist(), ["burn", "combo", "sand-galaxy"]);
+    assert_eq!(transition.playlist_order(), DeckOrder::Shuffle);
+    assert_eq!(transition.favourites(), ["ripple", "burn"]);
+    assert_eq!(transition.combo(), "combo:split-circle:iris:glitch");
+    let picked = transition.concrete_shader(|entries, order| {
+        assert_eq!(order, DeckOrder::Shuffle);
+        Some(entries[1].clone())
+    });
+    assert_eq!(picked, "combo:split-circle:iris:glitch");
+    assert_eq!(transition.concrete_shader(|_, _| None), "random");
+
+    let plain = Config::from_root(json!({ "transition": { "shader": "burn" } }));
+    assert_eq!(plain.transition().concrete_shader(|_, _| panic!("no playlist")), "burn");
+    let combo = Config::from_root(json!({ "transition": { "shader": "combo" } }));
+    assert_eq!(combo.transition().concrete_shader(|_, _| None), "combo:then:burn:ripple");
+}

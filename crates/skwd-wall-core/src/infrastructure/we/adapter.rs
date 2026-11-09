@@ -369,7 +369,12 @@ fn native_scene<'a>(
         let config = state.config();
         let configured = config.transition();
         transition.map_or_else(
-            || (configured.active(), configured.shader(), configured.duration_ms()),
+            || {
+                let shader = configured.concrete_shader(|entries, order| {
+                    state.apply().next_transition(entries, order)
+                });
+                (configured.active(), shader, configured.duration_ms())
+            },
             |request| (request.enabled, request.shader.to_string(), request.duration_ms),
         )
     };

@@ -619,6 +619,23 @@ pub mod keys {
         pub const ENABLED: &str = "transition.enabled";
         /// Custom build: where point-based transitions start (default, centre, random, dense).
         pub const ORIGIN: &str = "transition.origin";
+        /// Custom build (M3): starred transitions (comma list).
+        pub const FAVOURITES: &str = "transition.favourites";
+        /// Custom build (M3): transitions played in turns (comma list) and how.
+        pub const PLAYLIST: &str = "transition.playlist";
+        pub const PLAYLIST_ORDER: &str = "transition.playlistOrder";
+        /// Custom build (M3): the "combine two" transition.
+        pub const COMBO_FIRST: &str = "transition.comboFirst";
+        pub const COMBO_SECOND: &str = "transition.comboSecond";
+        pub const COMBO_MODE: &str = "transition.comboMode";
+        pub const COMBO_SPLIT: &str = "transition.comboSplit";
+        /// Custom build (M3): Settings-only family pickers of the two combined
+        /// transitions (writing one picks a transition of that family).
+        pub const COMBO_FIRST_FAMILY: &str = "transition.comboFirstFamily";
+        pub const COMBO_SECOND_FAMILY: &str = "transition.comboSecondFamily";
+        /// Custom build (M3): the Settings transition library's search text and filter.
+        pub const LIBRARY_SEARCH: &str = "transition.librarySearch";
+        pub const LIBRARY_FILTER: &str = "transition.libraryFilter";
         /// Custom build: "sketch before transition" settings.
         pub const SKETCH_DURATION_MS: &str = "transition.sketchDurationMs";
         pub const SKETCH_ENABLED: &str = "transition.sketchEnabled";

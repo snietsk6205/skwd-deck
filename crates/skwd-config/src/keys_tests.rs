@@ -496,6 +496,17 @@ fn wire_strings_pinned() {
     assert_eq!(keys::settings_window::COLUMNS, "settingsWindow.columns");
     assert_eq!(keys::settings_window::COMPACT_INDEX, "settingsWindow.compactIndex");
     assert_eq!(keys::transition::ORIGIN, "transition.origin");
+    assert_eq!(keys::transition::FAVOURITES, "transition.favourites");
+    assert_eq!(keys::transition::PLAYLIST, "transition.playlist");
+    assert_eq!(keys::transition::PLAYLIST_ORDER, "transition.playlistOrder");
+    assert_eq!(keys::transition::COMBO_FIRST, "transition.comboFirst");
+    assert_eq!(keys::transition::COMBO_SECOND, "transition.comboSecond");
+    assert_eq!(keys::transition::COMBO_MODE, "transition.comboMode");
+    assert_eq!(keys::transition::COMBO_SPLIT, "transition.comboSplit");
+    assert_eq!(keys::transition::COMBO_FIRST_FAMILY, "transition.comboFirstFamily");
+    assert_eq!(keys::transition::COMBO_SECOND_FAMILY, "transition.comboSecondFamily");
+    assert_eq!(keys::transition::LIBRARY_SEARCH, "transition.librarySearch");
+    assert_eq!(keys::transition::LIBRARY_FILTER, "transition.libraryFilter");
     assert_eq!(keys::transition::SKETCH_DURATION_MS, "transition.sketchDurationMs");
     assert_eq!(keys::transition::SKETCH_ENABLED, "transition.sketchEnabled");
     assert_eq!(keys::transition::SKETCH_SCENES, "transition.sketchScenes");

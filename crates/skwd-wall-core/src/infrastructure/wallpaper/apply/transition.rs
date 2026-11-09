@@ -53,7 +53,9 @@ impl TransitionSelection<'_> {
                 let config = state.config();
                 TransitionPlan {
                     enabled: config.transition().active() && !no_transition,
-                    shader: config.transition().shader(),
+                    shader: config.transition().concrete_shader(|entries, order| {
+                        state.apply().next_transition(entries, order)
+                    }),
                     duration_ms: config.transition().duration_ms(),
                 }
             }

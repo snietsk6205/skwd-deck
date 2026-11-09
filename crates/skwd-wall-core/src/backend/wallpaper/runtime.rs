@@ -23,6 +23,8 @@ pub struct ApplyRuntime {
     swap_slide: Mutex<Option<(String, u64)>>,
     render_fill: Mutex<String>,
     transition_source: Mutex<Option<String>>,
+    /// Custom build (M3): where the transition playlist is.
+    transition_deck: Mutex<crate::domain::wallpaper::TransitionDeck>,
 }
 
 impl ApplyRuntime {
@@ -123,6 +125,22 @@ impl ApplyRuntime {
 
     pub fn take_swap_slide(&self) -> Option<(String, u64)> {
         self.swap_slide.lock().unwrap_or_else(std::sync::PoisonError::into_inner).take()
+    }
+
+    /// Custom build (M3): the next transition of the playlist `entries`.
+    pub fn next_transition(
+        &self,
+        entries: &[String],
+        order: crate::domain::wallpaper::DeckOrder,
+    ) -> Option<String> {
+        let seed = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map_or(0, |elapsed| elapsed.as_nanos() as u64)
+            ^ self.generation();
+        self.transition_deck
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+            .next(entries, order, seed)
     }
 
     pub fn render_fill(&self) -> String {

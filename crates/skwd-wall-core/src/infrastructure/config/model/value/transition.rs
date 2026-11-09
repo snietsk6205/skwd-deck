@@ -1,7 +1,7 @@
+use super::Config;
 use serde_json::Value;
 
-use super::Config;
-
+mod deck;
 mod sketch;
 
 #[derive(Clone, Copy)]

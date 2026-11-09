@@ -495,6 +495,16 @@ fn wire_strings_pinned() {
     assert_eq!(keys::settings_window::POSITION, "settingsWindow.position");
     assert_eq!(keys::settings_window::COLUMNS, "settingsWindow.columns");
     assert_eq!(keys::settings_window::COMPACT_INDEX, "settingsWindow.compactIndex");
+    assert_eq!(keys::settings_window::HOME_CARDS, "settingsWindow.homeCards");
+    assert_eq!(keys::settings_window::OPEN_ON, "settingsWindow.openOn");
+    assert_eq!(keys::settings_window::LAST_PAGE, "settingsWindow.lastPage");
+    assert_eq!(keys::settings_window::MENU_STYLE, "settingsWindow.menuStyle");
+    assert_eq!(keys::settings_window::BAR_BLUR, "settingsWindow.barBlur");
+    assert_eq!(keys::settings_window::VIEW, "settingsWindow.view");
+    assert_eq!(keys::settings_window::HOME_BACKGROUND, "settingsWindow.homeBackground");
+    assert_eq!(keys::settings_window::HOME_BACKGROUND_PATH, "settingsWindow.homeBackgroundPath");
+    assert_eq!(keys::settings_window::HOME_PAUSED, "settingsWindow.homePaused");
+    assert_eq!(keys::settings_window::RECENT, "settingsWindow.recent");
     assert_eq!(keys::transition::ORIGIN, "transition.origin");
     assert_eq!(keys::transition::FAVOURITES, "transition.favourites");
     assert_eq!(keys::transition::PLAYLIST, "transition.playlist");
@@ -568,6 +578,7 @@ fn wire_strings_pinned() {
     assert_eq!(keys::keybind::SCENE_PROPERTIES, "keys.sceneProperties");
     assert_eq!(keys::keybind::SELECT, "keys.select");
     assert_eq!(keys::keybind::STUDIO, "keys.studio");
+    assert_eq!(keys::keybind::PALETTE, "keys.palette");
     assert_eq!(keys::keybind::SETTINGS, "keys.settings");
     assert_eq!(keys::keybind::TAG_CLOUD, "keys.tagCloud");
     assert_eq!(keys::keybind::TAG_MODE, "keys.tagMode");

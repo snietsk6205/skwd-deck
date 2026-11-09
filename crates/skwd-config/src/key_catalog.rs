@@ -149,6 +149,23 @@ pub mod keys {
         pub const POSITION: &str = "settingsWindow.position";
         pub const COLUMNS: &str = "settingsWindow.columns";
         pub const COMPACT_INDEX: &str = "settingsWindow.compactIndex";
+        /// R1: pinned Home cards, a comma list of page keys ("motion/transitions").
+        pub const HOME_CARDS: &str = "settingsWindow.homeCards";
+        /// R1: "home" or "last" (the page that was open last time).
+        pub const OPEN_ON: &str = "settingsWindow.openOn";
+        pub const LAST_PAGE: &str = "settingsWindow.lastPage";
+        /// R1: group menus as a "list" or a "grid".
+        pub const MENU_STYLE: &str = "settingsWindow.menuStyle";
+        /// R1: blurred picture behind the top bar.
+        pub const BAR_BLUR: &str = "settingsWindow.barBlur";
+        /// R1: "simple" hides the advanced rows; "advanced" shows every row.
+        pub const VIEW: &str = "settingsWindow.view";
+        /// R1: Home background: "wallpaper", "custom" or "none".
+        pub const HOME_BACKGROUND: &str = "settingsWindow.homeBackground";
+        pub const HOME_BACKGROUND_PATH: &str = "settingsWindow.homeBackgroundPath";
+        pub const HOME_PAUSED: &str = "settingsWindow.homePaused";
+        /// R1: recently changed setting paths, newest first (comma list).
+        pub const RECENT: &str = "settingsWindow.recent";
     }
     pub mod general {
         pub const APPLY_ON_PICKER_MONITOR: &str = "general.applyOnPickerMonitor";
@@ -726,6 +743,7 @@ pub mod keys {
         pub const SCENE_PROPERTIES: &str = "keys.sceneProperties";
         pub const SELECT: &str = "keys.select";
         pub const STUDIO: &str = "keys.studio";
+        pub const PALETTE: &str = "keys.palette";
         pub const NAV_DOWN: &str = "keys.navDown";
         pub const NAV_LEFT: &str = "keys.navLeft";
         pub const NAV_RIGHT: &str = "keys.navRight";

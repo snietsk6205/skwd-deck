@@ -166,6 +166,19 @@ pub mod keys {
         pub const HOME_PAUSED: &str = "settingsWindow.homePaused";
         /// R1: recently changed setting paths, newest first (comma list).
         pub const RECENT: &str = "settingsWindow.recent";
+        /// R1b: size of the cards: "small", "medium" or "large".
+        pub const CARD_SIZE: &str = "settingsWindow.cardSize";
+        /// R1b: cards per row: "auto", "2", "3" or "4".
+        pub const CARD_COLUMNS: &str = "settingsWindow.cardColumns";
+        /// R1b: "outlined" or "filled" cards.
+        pub const CARD_STYLE: &str = "settingsWindow.cardStyle";
+        /// R1b: faint grid pattern behind pages.
+        pub const GRID_PATTERN: &str = "settingsWindow.gridPattern";
+        /// R1b: where a card's preview plays: in the "card", or in a small
+        /// live preview that follows the "cursor".
+        pub const PREVIEW_STYLE: &str = "settingsWindow.previewStyle";
+        /// R1b: the Settings window's own animations.
+        pub const ANIMATIONS: &str = "settingsWindow.animations";
     }
     pub mod general {
         pub const APPLY_ON_PICKER_MONITOR: &str = "general.applyOnPickerMonitor";

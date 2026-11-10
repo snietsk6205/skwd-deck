@@ -505,6 +505,12 @@ fn wire_strings_pinned() {
     assert_eq!(keys::settings_window::HOME_BACKGROUND_PATH, "settingsWindow.homeBackgroundPath");
     assert_eq!(keys::settings_window::HOME_PAUSED, "settingsWindow.homePaused");
     assert_eq!(keys::settings_window::RECENT, "settingsWindow.recent");
+    assert_eq!(keys::settings_window::CARD_SIZE, "settingsWindow.cardSize");
+    assert_eq!(keys::settings_window::CARD_COLUMNS, "settingsWindow.cardColumns");
+    assert_eq!(keys::settings_window::CARD_STYLE, "settingsWindow.cardStyle");
+    assert_eq!(keys::settings_window::GRID_PATTERN, "settingsWindow.gridPattern");
+    assert_eq!(keys::settings_window::PREVIEW_STYLE, "settingsWindow.previewStyle");
+    assert_eq!(keys::settings_window::ANIMATIONS, "settingsWindow.animations");
     assert_eq!(keys::transition::ORIGIN, "transition.origin");
     assert_eq!(keys::transition::FAVOURITES, "transition.favourites");
     assert_eq!(keys::transition::PLAYLIST, "transition.playlist");
